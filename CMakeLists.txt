@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 2.8.4)
 project(TgBot)
 
 ### options
+option(ENABLE_SAMPLE "Set to ON to enable building of sample echobot" ON)
 option(ENABLE_TESTS "Set to ON to enable building of tests" OFF)
 
 ### sources
@@ -48,4 +49,9 @@ if (ENABLE_TESTS)
     message(STATUS "Building of tests is enabled")
     enable_testing()
     add_subdirectory(test)
+endif()
+
+#echobot
+if (ENABLE_SAMPLE)
+    ADD_SUBDIRECTORY( samples/echobot out/echobot )
 endif()
